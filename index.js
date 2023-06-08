@@ -50,8 +50,10 @@ class Person {
     this.stomach = [];
   }
     eat (someFood) {
-      if (this.stomach.length <= 10) {
+      if (this.stomach.length < 10) {
         this.stomach.push(someFood)
+      } else {
+        return `Please no more food, ${this.stomach} is too full!`
       }
     }
     poop () {
@@ -171,8 +173,22 @@ class Instructor extends Lambdasian {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
-class Student {
-   
+class Student extends Lambdasian {
+  constructor (argg) {
+    super (argg);
+    this.previousBackground = argg.previousBackground;
+    this.className = argg.className;
+    this.favSubjects = argg.favSubjects;
+  }
+    listSubjects () {
+      return `Loving ${this.favSubjects} !`;
+    }
+   PRAssignment (subject) {
+      return `${this.name} has submitted a PR for ${subject}`;
+   }
+   sprintChallenge (subject) {
+      return `${this.name} has begun sprint challenge on ${subject}`;
+   }
 }
 
 /*
@@ -189,7 +205,18 @@ class Student {
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-class ProjectManager {
+class ProjectManager extends Instructor{
+  constructor (soloArg) {
+    super(soloArg);
+    this.gradClassName = soloArg.gradClassName;
+    this.favInstructor = soloArg.favInstructor;
+  }
+    standUp (channel) {
+      return `${this.name} announces to ${channel}, @channel standy times!`;
+    }
+    debugsCode (student, subject) {
+      return `${this.name} debugs ${student.name}'s code on ${subject}`;
+    }
    
 }
 
